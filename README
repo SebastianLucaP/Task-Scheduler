@@ -1,5 +1,6 @@
 Am construit sistemul de planificare a task-urilor implementand cele patru
 politici de planificare in cadrul clasei "MyDispacher", in metoda "addTask".
+
 1. Pentru "Round Robin", am creat un contor "i" cu care trimit task-urile la
 nodul "i % nr_noduri", incrementand "i" dupa fiecare trimitere.
 2. Pentru "Shortest Queue", am creat 2 variabile "min" si "minID" in care, dupa
