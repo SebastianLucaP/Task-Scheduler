@@ -1,0 +1,26 @@
+Am construit sistemul de planificare a task-urilor implementand cele patru
+politici de planificare in cadrul clasei "MyDispacher", in metoda "addTask".
+1. Pentru "Round Robin", am creat un contor "i" cu care trimit task-urile la
+nodul "i % nr_noduri", incrementand "i" dupa fiecare trimitere.
+2. Pentru "Shortest Queue", am creat 2 variabile "min" si "minID" in care, dupa
+parcurgerea tuturor nodurilor, se afla id-ul si marimea cozii nodului cu cea mai
+mica marime a cozii, task-ul fiind trimis la acel nod.
+3. Pentru "Size Interval Task Assignment", am creat 3 if-uri prin care, in
+functie de tipul task-ului(SHORT, MEDIUM, LONG), il trimit la nodul 0, 1 sau 2.
+4. Pentru "Least Work Left", am creat 2 variabile "min" si "minID" in care de
+aceasta data, in urma parcurgerii tuturor nodurilor, se afla id-ul si munca
+ramasa a nodului cu cea mai putina munca ramasa, task-ul fiind trimis la acel
+nod.
+
+In cadrul clasei "MyHost", am implementat metodele "addTask" care adauga task-ul
+la coada de task-uri(PriorityBlockingQueue), "getQueueSize" care returneaza
+marimea cozii plus task-ul care se afla in executie, daca este cazul, "getWorkLeft"
+care returneaza durata muncii ramase plus durata ramasa a task-ului aflat in
+executie si "shutdown" care opreste nodul respectiv. In metoda "run", folosind un
+while(active), rezolv task-uri pana cand "shutdown" este apelat. Intr-o variabila
+task retin primul task din coada, apoi, daca acesta nu este null, in 2 variabile
+retin faptul ca un task este activ si timpul ramas de rezolvare al task-ului.
+Apoi, intr-un while, in cicluri de 250ms scad din timpul ramas. Daca task-ul
+este preemptibil si exista un task cu prioritatea mai mare decat acesta, task-ul
+este inlocuit de cel cu prioritatea mai mare. La finalul executiei unui task, este
+apelata metoda "finish", dupa care numarul de task-uri active este setat la 0.
